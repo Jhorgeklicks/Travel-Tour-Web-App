@@ -1,0 +1,81 @@
+@use "../base";
+@use "../utils/utils";
+
+.modal {
+    @include base.position(fixed, 0, 0, 0, 0, 100%, 100%);
+    background: rgba(0,0,0,.55);
+    z-index: 9;
+
+    .account-reg{
+        display: inline-block;
+        font-size: 1.3rem;
+        color: base.$blackDark;
+        cursor: pointer;
+    }
+
+    &__action{
+        @include base.responsive(phone){
+            flex-direction: column;
+        }
+
+        input{
+            @include base.responsive(phone){
+                margin: 1rem 0;
+            }
+        }
+    }
+
+    &__heading{
+        font-size: 2.1rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+        text-transform: capitalize;
+        font-weight: 700;
+        
+        @include base.responsive(phone){
+            font-weight: 600;
+            font-size: 1.6rem;
+        }
+    }
+
+    &__body{
+        background: base.$light;
+        width: 40rem;
+        padding: 2rem;
+        height: auto;
+        font-size: 1.4rem;
+        @include base.centerItem;
+        // @include base.animate(modalAnimate, .3s, linear, translateY(0), translateY(0),translateY(0), translateY(0));
+        animation: animateModal .8s linear ;
+
+        @keyframes animateModal {
+            0%{
+                top : 0%;
+                opacity: .1;
+            }
+            25%{
+                top: 20%;
+                opacity: .4;
+            }
+            50%{
+                top: 30%;
+                opacity: .6;
+            }
+            75%{
+                top: 40%;
+                opacity: 1;
+            }
+            100%{
+                top:50%;
+                opacity: 1;
+            }
+        }
+
+        @include base.responsive(phone){
+            width: 90%;
+        }
+    }
+
+
+}

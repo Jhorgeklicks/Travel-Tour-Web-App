@@ -1,0 +1,101 @@
+@use "../base/variables";
+@use "../abstracts/mixins";
+
+.cities{
+    margin: 8rem 0;
+    background: variables.$silverLight-40;
+    padding: 13rem 0;
+    transform: skewY(-5deg);
+
+    @include mixins.responsive(phone){
+        margin: 4rem 0;
+        padding: 4rem 0;
+    }
+
+    .city_container{
+        transform: skewY(5deg);
+    }
+
+    &__body{
+        background: variables.$light;
+        box-shadow: 1px 1px 10px rgba(0,0,0,.2);
+        position: relative;
+
+        &__image{
+            padding: .7rem;
+            border-radius: 7px;
+            transition: all .4s linear;
+            width: 100%;
+            height: 210px;
+
+            &:hover{
+                transform: scale(1.05);
+            }
+
+            &__status{
+                position: absolute;
+                top: 1.3rem;
+                left: 1.3rem;
+                display: inline-block;
+                padding: .5rem 1.3rem;
+                border-radius: 6px;
+                color: variables.$light;
+                font-weight: 600;
+            }
+        }
+
+
+        &__content{
+            margin: 1rem 0;
+            padding: 0 1rem;
+            
+
+            &__top{
+                @include mixins.flex(flex, row, space-between, center, null);
+                
+                &__name{
+                    font-size: 1.5rem;
+                }
+                
+                &__duration{
+                    @include mixins.flex(flex, row, space-between, center, null);
+
+                    .icon_watch{
+                        color: variables.$main1;
+                    }
+
+                    &_time{
+                        margin-left: .7rem;
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+            &__price{
+                font-size: 1.5rem;
+                font-weight: 800;
+
+                &_dollar{
+                    font-size: 1.4rem;
+                    // color : variables.$main1;
+                }
+            }
+
+            &__facility{
+                @include mixins.flex(flex, row, space-between, center, null);
+                margin-top: .7rem;
+
+                &__name{
+                    font-size: 1.4rem;
+                }
+            }
+
+            &__button{
+                margin: 1rem 0;
+
+                button{
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+}

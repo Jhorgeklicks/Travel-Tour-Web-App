@@ -1,0 +1,73 @@
+@use "../base/breakPoints"  as * ;
+
+@mixin position($position, $top, $right, $bottom, $left, $width, $height){
+    position: $position;
+    top: $top;
+    left: $left;
+    right: $right;
+    bottom: $bottom;
+    width: $width;
+    height: $height;
+}
+
+@mixin flex($display, $direction, $justify, $align-items, $height){
+    display : $display;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align-items;
+    height: $height;
+}
+
+@mixin animate($animationName, $duration, $timeFn, $traslate1, $traslate2, $traslate3, $traslate4) {
+    animation: $animationName $duration $timeFn;
+
+    @keyframes #{$animationName} {
+        0%{
+            opacity: 0;
+            transform: $traslate1;
+        }
+        50%{
+            opacity: .4;
+            transform: $traslate2;
+        }
+        70%{
+            opacity: .7;
+            transform: $traslate3;
+        }
+        100%{
+            opacity: 1;
+            transform: $traslate4;
+        }
+    }
+}
+
+@mixin centerItem {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+@mixin responsive($breakpoint){
+    @if $breakpoint == desktop {
+        @media (max-width : $lg) {
+            @content;
+        }
+    }
+    @if $breakpoint == tabletLg {
+        @media (max-width : $md) {
+            @content;
+        }
+    }
+    @if $breakpoint == tablet {
+        @media (max-width : $sm) {
+            @content;
+        }
+    }
+    
+    @if $breakpoint == phone {
+        @media (max-width : $xm) {
+            @content;
+        }
+    }
+}

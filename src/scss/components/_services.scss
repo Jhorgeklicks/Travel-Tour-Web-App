@@ -1,0 +1,108 @@
+@use "../base/variables";
+@use "../abstracts/mixins";
+
+.services{
+    margin: 8rem 0;
+    background: variables.$silverLight-40;
+    padding: 13rem 0;
+    transform: skewY(-5deg);
+    
+    
+    @include mixins.responsive(phone){
+        margin: 4rem 0;
+        padding: 5rem 0;
+    }
+    
+    &__content{
+        transform: skewY(5deg);
+    }
+
+    &__left{
+        margin-right: 10rem;
+        
+        @include mixins.responsive(tabletLg){
+            margin-right: 0;
+        }
+        
+        &__heading{
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 4rem;
+            background: linear-gradient(35deg, variables.$dark 40%, variables.$main1 40%);
+            color: transparent;
+            background-clip: text;
+            text-transform: capitalize;
+            
+            @include mixins.responsive(tabletLg){
+                font-size: 3rem;
+                font-weight: 700;
+            }
+           
+            @include mixins.responsive(phone){
+                font-size: 2rem;
+                font-weight: 700;
+            }
+        }   
+        
+        &__para{
+            margin-top:3.6rem ;
+            font-size: 1.6rem;
+            line-height: 2.6rem;
+            
+            @include mixins.responsive(phone){
+                margin-top:2.5rem ;
+            }
+        }
+        
+    }
+    &__list{
+        margin-bottom: 2.5rem;
+
+        &__heading{
+            @include mixins.flex(flex, null, left, center, null);
+            background: variables.$light;
+            font-size: 1.6rem;
+            font-weight: 400;
+            cursor: pointer;
+            text-transform: capitalize;
+
+            &__active{
+                color : variables.$main1;
+            }
+            &__chevron--down{
+                transform: rotate(90deg);
+                color : variables.$main1;
+            }
+        }
+
+        &__para{
+            max-height: 0;
+            overflow: hidden;
+            font-size: 1.5rem;
+            padding: 0 1.5rem;
+            line-height: 2.3rem;
+            
+            &--show{
+                max-height: 100rem;
+                transition: max-height .4s linear;
+                padding: 1rem 1.5rem 1.5rem 1.5rem;
+                animation: displayPara .4s linear;
+
+                @keyframes displayPara {
+                    0%{
+                        opacity: 0;
+                        transform: translateY(-1deg);
+                    }
+                    50%{
+                        opacity: 0.5;
+                    }
+                    100%{
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            }
+
+        }
+    }
+}

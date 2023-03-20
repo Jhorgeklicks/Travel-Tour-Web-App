@@ -1,0 +1,39 @@
+@use "../base/variables";
+@use "../abstracts/mixins";
+
+.destinationInfo{
+    margin: 6rem 2rem 3rem 2rem;
+    
+    @include mixins.responsive(phone){
+        margin: 3rem 1rem;
+    }
+    
+    &__para{
+        color: variables.$silverDark;
+        font-size: 1.5rem;
+        
+        @include mixins.responsive(phone){
+            font-size: 1.4rem;
+            text-align: justify;
+            margin-bottom: 3rem;
+        }
+
+    }
+
+    &__details{
+        @include mixins.flex(flex, row, space-between, center, null);
+        padding: 1.3rem 0;
+        border-bottom : 1px dotted variables.$silverLight;
+        
+        &__head{
+            font-size: 1.5rem;
+            color: variables.$silverDark;
+        }
+        
+        &__text{
+            font-size: 1.4rem;
+            color: variables.$silverDark;
+        }
+    }
+    
+}

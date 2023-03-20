@@ -1,0 +1,115 @@
+@use "../abstracts/mixins";
+@use "../base/variables";
+
+.gallery{
+    margin: 8rem 0 4rem 0;
+    
+    @include mixins.responsive(phone){
+        margin: 4rem 0;
+    }
+
+    
+    &__image{
+        width: 100%;
+        height: 22rem;
+        overflow: hidden;
+        
+        img{
+            cursor: pointer;
+            transition: all .5s linear;
+        }
+        
+        &:hover > img{
+            transform: scale(1.4);
+        }
+    }
+    
+    &__lightBox{
+        @include mixins.position(fixed,0,0,0,0,100%,100%);
+        background: rgba(0,0,0,.7 );
+        z-index: 10;
+        @include mixins.flex(flex, column, center, center, null);
+
+        @include mixins.responsive(phone){
+            padding: 0 1.5rem;
+        }
+        h4{
+            color: variables.$light;
+            font-size: 2rem;
+            margin-bottom: 1.4rem;
+            font-weight: 500;
+        }
+        
+        &__card{
+            width: 45rem;
+            max-height: 45rem;
+            border-radius: .3rem;
+            background: transparent;
+            overflow: hidden;
+            animation: cardAnimation .5s linear;
+            
+            @include mixins.responsive(phone){
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            
+            @keyframes cardAnimation {
+                0%{
+                    opacity: 0;
+                    transform: translateY(-2rem);
+                }
+                50%{
+                    opacity: 0.5;
+                    transform: translateY(-1rem);
+                }
+                100%{
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            &__image{
+                width: 45rem;
+                height: 45rem;
+                overflow: hidden;
+                background: variables.$light;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                @include mixins.responsive(phone){
+                    width: 80%;
+                    height: 36rem;
+                }
+                
+                img{
+                    width: 95%;
+                    height: 95%;
+                    border-radius: 6px;
+                    image-rendering: initial !important;
+                    box-shadow: 2px 1px 29px rgba(0,0,0,.3);
+                    animation: imgAnimation .4s linear;
+                    
+                   
+
+                    @keyframes imgAnimation {
+                        0%{
+                            opacity: 0;
+                            transform:scale(0.6);
+                        }
+                        50%{
+                            opacity: 0.5;
+                            transform:scale(0.8);
+                        }
+                        100%{
+                            opacity: 1;
+                            transform:scale(1);
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}

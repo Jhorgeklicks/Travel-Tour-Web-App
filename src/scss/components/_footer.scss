@@ -1,0 +1,114 @@
+@use "../base" as *;
+
+.footer{
+    width: 100%;
+    height: 50rem;
+    margin-top: 5rem;
+    padding: 8rem 0;
+    
+    @include responsive(phone){
+        height: auto;
+        margin-top: 2rem;
+        padding: 4rem 0;
+    }
+    
+    &__container{
+        width: 100%;
+
+        &__block{
+            background: $light;
+            padding: 2rem;
+        }
+    }
+
+    &__intro{
+
+        &__img{
+            width: 15rem;
+            
+            @include responsive(tablet){
+                width: 13rem;
+            }
+            
+            @include responsive(phone){
+                width: 10rem;
+            }
+            
+            img{
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover;
+            }
+        }
+        
+        &__info{
+            margin-top: 2rem;
+            font-size: 1.6rem;
+            color: $silverLight-80;
+            font-weight: 400;
+            width: 80%;
+            line-height: 2.5rem;
+            text-align: justify;
+            
+            @include responsive(phone){
+                width: 100%;
+            }
+            
+        }
+    }
+    
+    &__heading{
+        color : $blackDark;
+        text-transform: uppercase;
+        font-size: 1.6rem;
+        letter-spacing: .2rem;
+        margin-bottom: 1.5rem;
+        
+        @include responsive(phone){
+            font-size: 1.4rem;
+            margin-bottom: 1.4rem;
+            letter-spacing: .17rem;
+        }
+
+    }
+    
+    &__li{
+        display: flex;
+        align-items: center;
+        color: $silverLight-80;
+
+        a{
+            text-decoration: none;
+            color: $silverLight-80;
+            display: block;
+            font-size: 1.5rem;
+
+            &:hover{
+                color: $main1;
+            }
+            
+            @include responsive(phone){
+                font-size: 1.4rem;
+            }
+
+        }
+    }
+
+    &__copyRight{
+        width: 100%;
+        background: linear-gradient(to right,$main1 40%,$main2);
+        padding: 1rem;
+        @include flex(flex, null, center, null, null);
+
+        p{
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: $light;
+
+            @include responsive(phone){
+                font-size: 1.4rem;
+            }
+        }
+    }
+    
+}
